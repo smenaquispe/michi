@@ -7,10 +7,12 @@
     box-shadow: 5px 5px 2px 2px rgb(194, 190, 190);
 
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 133.3px);
+    grid-template-rows: repeat(3, 133.3px);
 }
 
 .table div {
     border: solid 1px black;
+    padding: 25px;
 }
 

@@ -1,15 +1,14 @@
 import { useState } from "react"
-import xsvg from '../../assets/x.svg'
 
-function Locker () {
+function Locker ({id, figureTurn}) {
     const [figure, setFigure] = useState('')
 
     const displayFigure = e => {
-        figure === '' ? setFigure(xsvg) : setFigure('')
+        figure === '' && setFigure(figureTurn) 
     }
 
     return (
-        <div className="locker" onClick={displayFigure}>{
+        <div className="locker" id={id} onClick={displayFigure}>{
             figure && <img src={figure} alt="figure taken" />
         }</div>
     ) 
