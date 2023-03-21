@@ -1,5 +1,5 @@
 import styles from './PlayGround.module.css'
-import Table from "./Table";
+import Table from "../Table/Table";
 
 function PlayGround () {
     return (

@@ -1,9 +1,9 @@
 import styles from './Table.module.css'
-import Locker from './Locker'
+import Locker from '../Locker/Locker'
 import { useEffect, useState } from 'react'
 import xsvg from '../../assets/x.svg'
 import circlesvg from '../../assets/circle.svg'
-import { win } from '../services/win'
+import { win } from './win'
 
 
 function Table () {
@@ -23,6 +23,10 @@ function Table () {
         figure: xsvg
     })
 
+    // winner 
+    const [winner, setWinner] = useState(null)
+
+    // maneja el estado del juego y tambien los turnos
     const handleGameState = (e) => {
         try {
             const [row, col] = e.target.id.split('_').map(str => parseInt(str))
@@ -32,19 +36,25 @@ function Table () {
             setTurn(turn.letter === 'X' ? 
                 { letter: 'O', figure: circlesvg } 
                 : { letter: 'X', figure: xsvg} )
+            
+            setWinner(win(gameState))
         } catch (error) {
             return
         }
     }
 
+    // cuando gana
     useEffect(() => {
-        if(win(gameState))
-            alert(win(gameState))
-    }, [gameState, turn])
+        if(winner){
+            setTimeout(() => {
+                alert(`Winner ${winner}`)
+            }, 500);
+        }
+    }, [winner])
 
     return (
         <article className={styles.table} onClick={handleGameState}>
-            <Locker id={'0_0'} figureTurn={turn.figure} ></Locker>
+            <Locker id={'0_0'} figureTurn={turn.figure}></Locker>
             <Locker id={'0_1'} figureTurn={turn.figure}></Locker>
             <Locker id={'0_2'} figureTurn={turn.figure}></Locker>
 
