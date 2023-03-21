@@ -1,4 +1,4 @@
-import PlayGround from "./components/PlayGround"
+import PlayGround from "./components/PlayGround/PlayGround"
 
 function App () {
     return <PlayGround />

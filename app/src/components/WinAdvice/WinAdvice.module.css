@@ -1,0 +1,17 @@
+.messageWin {
+    position: absolute;
+    font-size: 100px;
+    z-index: 1;
+    background-color: rgba(255,255,255, 0.9);
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+}
+
+.messageWin h1 {
+    margin: 0 auto;
+}

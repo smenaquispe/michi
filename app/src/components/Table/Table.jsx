@@ -1,9 +1,10 @@
 import styles from './Table.module.css'
 import Locker from '../Locker/Locker'
 import { useEffect, useState } from 'react'
-import xsvg from '../../assets/x.svg'
-import circlesvg from '../../assets/circle.svg'
+import xsvg from '../../../assets/x.svg'
+import circlesvg from '../../../assets/circle.svg'
 import { win } from './win'
+import WinAdvice from '../WinAdvice/WinAdvice'
 
 
 function Table () {
@@ -43,14 +44,6 @@ function Table () {
         }
     }
 
-    // cuando gana
-    useEffect(() => {
-        if(winner){
-            setTimeout(() => {
-                alert(`Winner ${winner}`)
-            }, 500);
-        }
-    }, [winner])
 
     return (
         <article className={styles.table} onClick={handleGameState}>
@@ -65,6 +58,13 @@ function Table () {
             <Locker id={'2_0'} figureTurn={turn.figure}></Locker>
             <Locker id={'2_1'} figureTurn={turn.figure}></Locker>
             <Locker id={'2_2'} figureTurn={turn.figure}></Locker>
+
+            {
+                winner && 
+                <WinAdvice>
+                    ¡Win {winner}!
+                </WinAdvice>
+            }
         </article>
     )
 }
