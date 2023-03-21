@@ -1,0 +1,14 @@
+.playground {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-direction: column;
+
+    left: calc(50% - 200px);
+    top: calc(50% - 250px);
+}
+
+.playground h1 {
+    text-align: center;
+}

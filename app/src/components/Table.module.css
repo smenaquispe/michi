@@ -1,3 +1,9 @@
 .table {
-    background-color: red;
+    background-color: white;
+    width: 400px;
+    height: 400px;
+    border: solid 5px black;
+    border-radius: 6px;
+    box-shadow: 5px 5px 2px 2px rgb(194, 190, 190);
 }
+

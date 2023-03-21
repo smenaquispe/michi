@@ -2,23 +2,25 @@ import styles from './Table.module.css'
 
 function Table () {
     return (
-        <table className={styles.table}>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
+        <article className={styles.table}>
+            <section>
+                <div></div>
+                <div></div>
+                <div></div>
+            </section>
+            
+            <section>
+                <div></div>
+                <div></div>
+                <div></div>
+            </section>
+
+            <section>
+                <div></div>
+                <div></div>
+                <div></div>
+            </section>
+        </article>
     )
 }
 

@@ -1,7 +1,7 @@
-import Table from "./components/Table"
+import PlayGround from "./components/PlayGround"
 
 function App () {
-    return <Table />
+    return <PlayGround />
 }
 
 export default App
