@@ -9,30 +9,25 @@ function PlayGround () {
     const [stage, setStage] = useState('game')
     
     // array recieve the image of the game
-    const [gameState, setGameState] = useState(
-        [
-            ['', '', ''],
-            ['', '', ''],
-            ['', '', '']
-        ]
-    )
+    const [gameState, setGameState] = useState([
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+    ])
+    const [winner, setWinner] = useState(null)
 
     // reboot the game
     const resetGame = () => {
-        setGameState(     
-        [
+        setGameState([
             ['', '', ''],
             ['', '', ''],
             ['', '', '']
         ])
-
         setStage('game')
     }
 
-    // winner 
-    const [winner, setWinner] = useState(null)
-
     useEffect(() => {
+        // if winnner, necessary reset
         if(winner) setStage('reset')
     }, [winner])
 
@@ -44,10 +39,10 @@ function PlayGround () {
 
             {
                 stage === 'reset' && 
-                <Advice resetGame={resetGame} >
+                <Advice onClick={resetGame} >
                     {
-                        winner === 'tie' 
-                        ? "¡Empate!"
+                        winner === 'draw' 
+                        ? "¡Draw!"
                         : `¡Win ${winner}!`
                     }
                 </Advice>

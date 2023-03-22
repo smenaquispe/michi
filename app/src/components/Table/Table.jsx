@@ -1,7 +1,7 @@
 import styles from './Table.module.css'
 import Locker from '../Locker/Locker'
 import { useState } from 'react'
-import { win } from './win'
+import { gameRules } from './gameRules'
 
 function Table ({setWinner, gameState, setGameState}) {
 
@@ -13,19 +13,27 @@ function Table ({setWinner, gameState, setGameState}) {
         
         try {
 
+            // get locker
             let locker
             if(e.target.className === 'locker') locker = e.target 
             else locker = e.target.parentElement
 
+            // get the position of locker
             const [row, col] = locker.id.split('_').map(str => parseInt(str))
             const currentGame = gameState
 
+            // try if locker is done
             if(currentGame[row][col] !== '') return
 
+            // set the game with this 
             currentGame[row][col] = turn
             setGameState(currentGame)
+
+            // set other turn
             setTurn(turn === 'X' ? 'O' : 'X')                
-            setWinner(win(gameState))
+
+            // set the winner if win
+            setWinner(gameRules(gameState))
 
 
         } catch (error) {

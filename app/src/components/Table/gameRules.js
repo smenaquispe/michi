@@ -1,11 +1,11 @@
-export function win (game){
+export function gameRules (game){
     if(checkRows(game, 'X')) return 'X'
     if(checkRows(game, 'O')) return 'O'
     if(checkColumns(game, 'X')) return 'X'
     if(checkColumns(game, 'O')) return 'O'
     if(checkDiagonal(game, 'X')) return 'X'
     if(checkDiagonal(game, 'O')) return 'O'
-    if(checkTie(game)) return 'tie'
+    if(checkTie(game)) return 'draw'
 
     return false
 }

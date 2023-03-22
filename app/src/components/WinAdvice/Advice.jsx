@@ -1,10 +1,10 @@
 import { createPortal } from 'react-dom'
 import styles from './Advice.module.css'
 
-function Advice({children, resetGame}){
+function Advice({children, onClick}){
 
     return createPortal(
-        <div className={styles.message} onClick={resetGame}>
+        <div className={styles.message} onClick={onClick}>
             <h1>
                 {children}
             </h1>
