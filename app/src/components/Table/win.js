@@ -5,6 +5,7 @@ export function win (game){
     if(checkColumns(game, 'O')) return 'O'
     if(checkDiagonal(game, 'X')) return 'X'
     if(checkDiagonal(game, 'O')) return 'O'
+    if(checkTie(game)) return 'tie'
 
     return false
 }
@@ -47,4 +48,15 @@ function checkDiagonal(game, letter){
         return true
     
     return false       
+}
+
+// si el juego termino en empate
+function checkTie(game){
+    for(let i = 0; i < game.length; i++){
+        for(let j = 0; j < game.length; j++){
+            if(game[i][j] === '') return false
+        }
+    }
+    
+    return true
 }

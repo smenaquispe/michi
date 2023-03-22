@@ -1,8 +1,6 @@
 import styles from './Table.module.css'
 import Locker from '../Locker/Locker'
-import { useEffect, useState } from 'react'
-import xsvg from '../../../assets/x.svg'
-import circlesvg from '../../../assets/circle.svg'
+import { useState } from 'react'
 import { win } from './win'
 
 function Table ({setWinner, gameState, setGameState}) {

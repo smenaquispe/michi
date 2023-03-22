@@ -1,6 +1,6 @@
 import styles from './PlayGround.module.css'
 import Table from "../Table/Table";
-import WinAdvice from '../WinAdvice/WinAdvice';
+import Advice from '../WinAdvice/Advice';
 import { useEffect, useState } from 'react';
 
 function PlayGround () {
@@ -33,7 +33,7 @@ function PlayGround () {
     const [winner, setWinner] = useState(null)
 
     useEffect(() => {
-        if(winner) setStage('win')
+        if(winner) setStage('reset')
     }, [winner])
 
     return (
@@ -43,10 +43,14 @@ function PlayGround () {
             <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
 
             {
-                stage === 'win' && 
-                <WinAdvice resetGame={resetGame} >
-                    ¡Win {winner}!
-                </WinAdvice>
+                stage === 'reset' && 
+                <Advice resetGame={resetGame} >
+                    {
+                        winner === 'tie' 
+                        ? "¡Empate!"
+                        : `¡Win ${winner}!`
+                    }
+                </Advice>
             }
         </main>
     )

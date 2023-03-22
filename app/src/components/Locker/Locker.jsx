@@ -8,8 +8,6 @@ const figureMap = {
 }
 
 function Locker ({id, figureTurn}) {
-
-
     return (
         <div className="locker" id={id} >{
             figureMap[figureTurn] && <img src={figureMap[figureTurn]} alt="figure taken" />
