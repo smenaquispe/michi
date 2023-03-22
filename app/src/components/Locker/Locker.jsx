@@ -1,15 +1,18 @@
-import { useState } from "react"
+import xsvg from '../../../assets/x.svg'
+import circlesvg from '../../../assets/circle.svg'
+
+const figureMap = {
+    '': null,
+    'X': xsvg,
+    'O': circlesvg
+}
 
 function Locker ({id, figureTurn}) {
-    const [figure, setFigure] = useState('')
 
-    const displayFigure = e => {
-        figure === '' && setFigure(figureTurn) 
-    }
 
     return (
-        <div className="locker" id={id} onClick={displayFigure}>{
-            figure && <img src={figure} alt="figure taken" />
+        <div className="locker" id={id} >{
+            figureMap[figureTurn] && <img src={figureMap[figureTurn]} alt="figure taken" />
         }</div>
     ) 
 }

@@ -1,10 +1,10 @@
 import { createPortal } from 'react-dom'
 import styles from './WinAdvice.module.css'
 
-function WinAdvice({children}){
+function WinAdvice({children, resetGame}){
 
     return createPortal(
-        <div className={styles.messageWin}>
+        <div className={styles.messageWin} onClick={resetGame}>
             <h1>
                 {children}
             </h1>
