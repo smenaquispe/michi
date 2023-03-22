@@ -1,7 +1,12 @@
 import PlayGround from "./components/PlayGround/PlayGround"
+import { DarkModeProvider } from './services/DarkModeContext'
 
 function App () {
-    return <PlayGround />
+    return (
+        <DarkModeProvider>
+            <PlayGround />
+        </DarkModeProvider>
+    )
 }
 
 export default App
