@@ -1,14 +1,10 @@
 import styles from './PlayGround.module.css'
 import Table from "../Table/Table";
 import Advice from '../WinAdvice/Advice';
-import { useEffect, useState, useContext } from 'react';
-import { DarkModeContext } from '../../services/DarkModeContext'
+import { useEffect, useState } from 'react';
 import ThemeButton from '../ThemeButton/ThemeButton';
 
 function PlayGround () {
-
-    // probando contexto
-    const {darkMode, toggleDarkMode} = useContext(DarkModeContext)
 
     // stages
     const [stage, setStage] = useState('game')
