@@ -11,4 +11,5 @@
 
 .playground h1 {
     text-align: center;
+    color: var(--secundary-color);
 }

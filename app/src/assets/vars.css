@@ -1,0 +1,14 @@
+:root {
+    --primary-color: #ffffff;
+    --secundary-color: #000000;
+    --shadow-color: rgb(194, 190, 190);
+}
+
+* {
+    margin: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--primary-color);
+}

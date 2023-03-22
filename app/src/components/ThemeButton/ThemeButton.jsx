@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { DarkModeContext } from '../../services/DarkModeContext'
-import moonSvg from '../../../assets/moon.svg'
-import sunSvg from '../../../assets/sun.svg'
+import moonSvg from '../../assets/moon.svg'
+import sunSvg from '../../assets/sun.svg'
 import styles from './ThemeButton.module.css'
 
 function ThemeButton(){
@@ -11,7 +11,8 @@ function ThemeButton(){
     return (
         <div onClick={toggleDarkMode} className={styles.themeButton}>
             <img src={
-                darkMode ? moonSvg : sunSvg
+                // moon por defecto
+                darkMode ? sunSvg : moonSvg
             } alt="image of theme mode" />
         </div>
     )

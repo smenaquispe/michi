@@ -1,5 +1,5 @@
-import xsvg from '../../../assets/x.svg'
-import circlesvg from '../../../assets/circle.svg'
+import xsvg from '../../assets/x.svg'
+import circlesvg from '../../assets/circle.svg'
 
 const figureMap = {
     '': null,
