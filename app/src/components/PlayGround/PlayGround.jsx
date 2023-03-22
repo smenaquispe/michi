@@ -3,11 +3,12 @@ import Table from "../Table/Table";
 import Advice from '../WinAdvice/Advice';
 import { useEffect, useState, useContext } from 'react';
 import { DarkModeContext } from '../../services/DarkModeContext'
+import ThemeButton from '../ThemeButton/ThemeButton';
 
 function PlayGround () {
 
     // probando contexto
-    const {darkMode} = useContext(DarkModeContext)
+    const {darkMode, toggleDarkMode} = useContext(DarkModeContext)
 
     // stages
     const [stage, setStage] = useState('game')
@@ -36,22 +37,26 @@ function PlayGround () {
     }, [winner])
 
     return (
-        <main className={styles.playground}>
-            <h1>Tik Tak Toe</h1>
+        <>
+            <main className={styles.playground}>
+                <h1>Tik Tak Toe</h1>
 
-            <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
+                <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
 
-            {
-                stage === 'reset' && 
-                <Advice onClick={resetGame} >
-                    {
-                        winner === 'draw' 
-                        ? "¡Draw!"
-                        : `¡Win ${winner}!`
-                    }
-                </Advice>
-            }
-        </main>
+                {
+                    stage === 'reset' && 
+                    <Advice onClick={resetGame} >
+                        {
+                            winner === 'draw' 
+                            ? "¡Draw!"
+                            : `¡Win ${winner}!`
+                        }
+                    </Advice>
+                }
+
+            </main>
+            <ThemeButton />
+        </>
     )
 }
 

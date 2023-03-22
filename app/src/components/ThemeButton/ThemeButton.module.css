@@ -1,0 +1,20 @@
+.themeButton {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    border-radius: 50%;
+    border: 4px black solid;
+
+    left: 40px;
+    top: 40px;
+
+    transition: transform 0.5s ease;
+}
+
+.themeButton img {
+    padding: 10px;
+}
+
+.themeButton:hover{
+    transform: scale(1.15);
+}
