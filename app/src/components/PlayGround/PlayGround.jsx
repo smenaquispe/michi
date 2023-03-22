@@ -55,7 +55,7 @@ function PlayGround () {
             </main>
 
             <ThemeButton />
-            <Score />
+            <Score winner={winner} />
         </>
     )
 }
