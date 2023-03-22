@@ -1,8 +1,10 @@
-import styles from './PlayGround.module.css'
+import { useEffect, useState } from 'react';
 import Table from "../Table/Table";
 import Advice from '../WinAdvice/Advice';
-import { useEffect, useState } from 'react';
 import ThemeButton from '../ThemeButton/ThemeButton';
+import Score from '../Score/Score';
+import styles from './PlayGround.module.css'
+
 
 function PlayGround () {
 
@@ -51,7 +53,9 @@ function PlayGround () {
                 }
 
             </main>
+
             <ThemeButton />
+            <Score />
         </>
     )
 }
