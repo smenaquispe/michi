@@ -15,7 +15,7 @@ function Score ({winner}){
     }, [winner])
 
     return (
-        <div className={styles.scoreTable}>
+        <div className={styles.scoreTable} id="score-table">
             <div className={styles.scoreTittle}>
                 Score
             </div>

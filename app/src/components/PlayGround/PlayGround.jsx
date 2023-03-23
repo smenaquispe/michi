@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+import { StageContext } from '../../services/StageContext';
+import { useEffect, useState, useContext } from 'react';
 import Table from "../Table/Table";
 import Advice from '../Advice/Advice';
 import ThemeButton from '../ThemeButton/ThemeButton';
@@ -8,15 +9,9 @@ import styles from './PlayGround.module.css'
 
 
 function PlayGround () {
-
-    /**
-     * menu -> begin stage
-     * game -> stage show the table
-     * reset -> show advice and reboot the table
-     */
-    // stages
-    const [stage, setStage] = useState('menu')
     
+    const { stage, setStage } = useContext(StageContext)
+
     // array recieve the image of the game
     const [gameState, setGameState] = useState([
         ['', '', ''],
@@ -40,6 +35,12 @@ function PlayGround () {
         if(winner) setStage('reset')
     }, [winner])
 
+    // display the score component
+    useEffect(() => {
+        if(stage === 'menu') document.getElementById('score-table').style.display = 'none'
+        else if(stage === 'game') document.getElementById('score-table').style.display = 'flex'
+    }, [stage])
+
     return (
         <>
             <main className={styles.playground}>
@@ -47,7 +48,7 @@ function PlayGround () {
 
                 {
                     stage === 'menu' &&
-                    <Menu setStage={setStage} />
+                    <Menu />
                 }
 
                 {
@@ -55,7 +56,6 @@ function PlayGround () {
                     <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
 
                 }
-
 
                 {
                     stage === 'reset' && 
@@ -72,7 +72,6 @@ function PlayGround () {
 
             <ThemeButton />
             <Score winner={winner} />
-            
         </>
     )
 }

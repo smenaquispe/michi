@@ -1,4 +1,10 @@
-function Menu({setStage}){   
+import { useContext } from "react";
+import { StageContext } from "../../services/StageContext";
+
+function Menu(){   
+
+    const { setStage } = useContext(StageContext)
+
     return (
         <>
             <button onClick={() => setStage('game')}>Play with Computer</button>
