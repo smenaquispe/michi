@@ -1,4 +1,5 @@
 import { StageContext } from '../../services/StageContext';
+import { WinnerContext } from '../../services/WinnerContext';
 import { useEffect, useState, useContext } from 'react';
 import Table from "../Table/Table";
 import Advice from '../Advice/Advice';
@@ -18,7 +19,8 @@ function PlayGround () {
         ['', '', ''],
         ['', '', '']
     ])
-    const [winner, setWinner] = useState(null)
+
+    const { winner } = useContext(WinnerContext)
 
     // reboot the game
     const resetGame = () => {
@@ -35,11 +37,6 @@ function PlayGround () {
         if(winner) setStage('reset')
     }, [winner])
 
-    // display the score component
-    useEffect(() => {
-        if(stage === 'menu') document.getElementById('score-table').style.display = 'none'
-        else if(stage === 'game') document.getElementById('score-table').style.display = 'flex'
-    }, [stage])
 
     return (
         <>
@@ -53,7 +50,7 @@ function PlayGround () {
 
                 {
                     stage === 'game' &&
-                    <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
+                    <Table gameState={gameState} setGameState={setGameState} />
 
                 }
 

@@ -1,12 +1,16 @@
 import styles from './Table.module.css'
 import Locker from '../Locker/Locker'
-import { useState } from 'react'
-import { gameRules } from './gameRules'
+import { useState, useContext } from 'react'
+import { WinnerContext } from '../../services/WinnerContext'
 
-function Table ({setWinner, gameState, setGameState}) {
+
+function Table ({gameState, setGameState}) {
 
     // turns
     const [turn, setTurn] = useState('X')
+
+    // use winner context
+    const {play} = useContext(WinnerContext)
 
     // maneja el estado del juego y tambien los turnos
     const handleGameState = (e) => {
@@ -33,7 +37,7 @@ function Table ({setWinner, gameState, setGameState}) {
             setTurn(turn === 'X' ? 'O' : 'X')                
 
             // set the winner if win
-            setWinner(gameRules(gameState))
+            play(gameState)
 
 
         } catch (error) {

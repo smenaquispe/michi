@@ -1,0 +1,22 @@
+import React, {createContext, useState} from "react";
+import { gameRules } from "../components/Table/gameRules";
+
+const WinnerContext = createContext()
+
+function WinnerProvider({children}) {
+    const [winner, setWinner] = useState(null)
+
+    const play = (gameState) => {
+        setWinner(gameRules(gameState))
+    }
+
+    return (
+        <>
+            <WinnerContext.Provider value={{winner, play}}>
+                {children}
+            </WinnerContext.Provider>
+        </>
+    )
+}
+
+export { WinnerContext, WinnerProvider }
