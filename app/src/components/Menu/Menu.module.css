@@ -1,0 +1,21 @@
+.panelButtons{
+    width: 400px;
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+}
+
+.panelButtons button {
+    background-color: var(--primary-color);
+    border: 3px solid var(--secundary-color);
+    color: var(--secundary-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 2px 2px 2px 2px var(--shadow-color) ;
+    transition: transform 0.5s ease;
+}
+
+
+.panelButtons button:hover{
+    transform: scale(1.15);
+}

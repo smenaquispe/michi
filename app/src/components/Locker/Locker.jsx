@@ -1,35 +1,19 @@
-import xSvg from '../../assets/x.svg'
-import circleSvg from '../../assets/circle.svg'
-import xDarkModeSvg from '../../assets/xDarkMode.svg'
-import circleDarkModeSvg from '../../assets/circleDarkMode.svg'
-import { useContext } from 'react'
-import { DarkModeContext } from '../../services/DarkModeContext'
+import { IconX } from '@tabler/icons-react'
+import { IconCircle } from '@tabler/icons-react'
 
-const figureMapLightMode = {
+const figureMap = {
     '': null,
-    'X': xSvg,
-    'O': circleSvg
+    'X': <IconX size={80} />,
+    'O': <IconCircle size={80} />
 }
 
-
-const figureMapDarkMode = {
-    '': null,
-    'X': xDarkModeSvg,
-    'O': circleDarkModeSvg
-}
 
 function Locker ({id, figureTurn}) {
-
-    const { darkMode } = useContext(DarkModeContext)
 
     return (
         <div className="locker" id={id} >
             {
-                darkMode ?
-                figureMapDarkMode[figureTurn] && <img src={figureMapDarkMode[figureTurn]} alt="figure taken" />
-                :
-                figureMapLightMode[figureTurn] && <img src={figureMapLightMode[figureTurn]} alt="figure taken" />
-
+                figureMap[figureTurn] && figureMap[figureTurn]
             }
         </div>
     ) 

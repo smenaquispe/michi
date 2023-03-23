@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from 'react';
 import { StageContext } from '../../services/StageContext';
 import styles from './Score.module.css'
+import { IconX, IconCircle } from '@tabler/icons-react';
 
 function Score ({winner}){
 
@@ -30,8 +31,8 @@ function Score ({winner}){
             </div>
             <div className={styles.scoreSpaces}>
                 <div className={styles.letters}>
-                    <p>X</p>
-                    <p>O</p>
+                    <p><IconX /></p>
+                    <p><IconCircle /></p>
                 </div>
                 <div className={styles.scores}>
                     <p>{scores['X']}</p>

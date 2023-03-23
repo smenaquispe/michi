@@ -8,10 +8,10 @@ import Score from '../Score/Score';
 import Menu from '../Menu/Menu';
 import styles from './PlayGround.module.css'
 
-
 function PlayGround () {
     
     const { stage, setStage } = useContext(StageContext)
+    const { winner } = useContext(WinnerContext)
 
     // array recieve the image of the game
     const [gameState, setGameState] = useState([
@@ -19,8 +19,6 @@ function PlayGround () {
         ['', '', ''],
         ['', '', '']
     ])
-
-    const { winner } = useContext(WinnerContext)
 
     // reboot the game
     const resetGame = () => {

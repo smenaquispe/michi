@@ -12,10 +12,13 @@
     transition: transform 0.5s ease;
 
     box-shadow: 2px 2px 2px 2px var(--shadow-color) ;
-}
 
-.themeButton img {
-    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--secundary-color);
+    text-align: center;
 }
 
 .themeButton:hover{

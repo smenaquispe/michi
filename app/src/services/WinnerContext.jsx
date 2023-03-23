@@ -1,5 +1,5 @@
 import React, {createContext, useState} from "react";
-import { gameRules } from "../components/Table/gameRules";
+import { gameRules } from "./gameRules";
 
 const WinnerContext = createContext()
 

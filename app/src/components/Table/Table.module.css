@@ -16,4 +16,5 @@
 .table div {
     border: solid 1px var(--secundary-color);
     padding: 25px;
+    color:  var(--secundary-color);
 }
