@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
 import Table from "../Table/Table";
-import Advice from '../WinAdvice/Advice';
+import Advice from '../Advice/Advice';
 import ThemeButton from '../ThemeButton/ThemeButton';
 import Score from '../Score/Score';
+import Menu from '../Menu/Menu';
 import styles from './PlayGround.module.css'
 
 
 function PlayGround () {
 
+    /**
+     * menu -> begin stage
+     * game -> stage show the table
+     * reset -> show advice and reboot the table
+     */
     // stages
-    const [stage, setStage] = useState('game')
+    const [stage, setStage] = useState('menu')
     
     // array recieve the image of the game
     const [gameState, setGameState] = useState([
@@ -39,7 +45,17 @@ function PlayGround () {
             <main className={styles.playground}>
                 <h1>Tik Tak Toe</h1>
 
-                <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
+                {
+                    stage === 'menu' &&
+                    <Menu setStage={setStage} />
+                }
+
+                {
+                    stage === 'game' &&
+                    <Table setWinner={setWinner} gameState={gameState} setGameState={setGameState} />
+
+                }
+
 
                 {
                     stage === 'reset' && 
@@ -56,6 +72,7 @@ function PlayGround () {
 
             <ThemeButton />
             <Score winner={winner} />
+            
         </>
     )
 }
