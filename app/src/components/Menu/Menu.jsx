@@ -3,21 +3,27 @@ import { StageContext } from "../../services/StageContext";
 import styles from './Menu.module.css'
 import { IconDeviceDesktop, IconFriends } from '@tabler/icons-react';
 
-function Menu(){   
+function Menu({setGameMode}){   
 
     const { setStage } = useContext(StageContext)
 
-    const goToGame = () => {
+    const goToMultiPlayer = () => {
         setStage('game')
+        setGameMode('multiplayer')
+    }
+
+    const goToSinglePlayer = () => {
+        setStage('game')
+        setGameMode('singleplayer')
     }
 
     return (
         <>
             <div className={styles.panelButtons}>
-                <button onClick={goToGame}>
+                <button onClick={goToSinglePlayer}>
                     <IconDeviceDesktop size={50} />                    
                 </button>
-                <button>
+                <button onClick={goToMultiPlayer}>
                     <IconFriends  size={50} />
                 </button>
             </div>

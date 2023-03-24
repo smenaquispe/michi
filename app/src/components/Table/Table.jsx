@@ -1,49 +1,59 @@
 import styles from './Table.module.css'
 import Locker from '../Locker/Locker'
-import { useState, useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 import { WinnerContext } from '../../services/WinnerContext'
+import { handleGame, computerPlay } from './HandleGame'
+import { StageContext } from '../../services/StageContext'
 
 
-function Table ({gameState, setGameState}) {
+function Table ({gameState, setGameState, gameMode}) {
+
+    //stage 
+    const {stage} = useContext(StageContext)
 
     // turns
     const [turn, setTurn] = useState('X')
 
     // use winner context
-    const {play} = useContext(WinnerContext)
+    const {winner, play} = useContext(WinnerContext)
 
-    // maneja el estado del juego y tambien los turnos
-    const handleGameState = (e) => {
-        
-        try {
+    const [waitClick, setWaitClick] = useState(true)
 
-            // get locker
-            let locker
-            if(e.target.className === 'locker') locker = e.target 
-            else locker = e.target.parentElement
+    const handleGameState = e => {
 
-            // get the position of locker
-            const [row, col] = locker.id.split('_').map(str => parseInt(str))
-            const currentGame = gameState
-
-            // try if locker is done
-            if(currentGame[row][col] !== '') return
-
-            // set the game with this 
-            currentGame[row][col] = turn
-            setGameState(currentGame)
-
-            // set other turn
-            setTurn(turn === 'X' ? 'O' : 'X')                
-
-            // set the winner if win
-            play(gameState)
-
-
-        } catch (error) {
-            return
+        if(waitClick){
+            handleGame(e, {
+                gameState,
+                setGameState, 
+                play,
+                setTurn,
+                turn
+            })
         }
     }
+
+    useEffect(() => {
+        if(!turn) return
+
+        if(gameMode === 'singleplayer' && turn === 'O' && !winner){
+            setWaitClick(false)
+            setTimeout(() => {
+                computerPlay({
+                    gameState,
+                    setGameState, 
+                    play,
+                    setTurn,
+                    turn
+                })
+                setWaitClick(true)
+            }, 500)
+        }
+    }, [turn])
+
+    useEffect(() => {
+        if(stage === 'reset')
+            setTurn('X')
+    }, [stage])
 
     return (
         <article className={styles.table} onClick={handleGameState}>

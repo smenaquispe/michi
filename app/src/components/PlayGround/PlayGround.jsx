@@ -21,6 +21,9 @@ function PlayGround () {
         ['', '', '']
     ])
 
+    // gamemode
+    const [gameMode, setGameMode] = useState(null)
+
     // reboot the game
     const resetGame = () => {
         setGameState([
@@ -36,7 +39,6 @@ function PlayGround () {
         if(winner) setStage('reset')
     }, [winner])
 
-
     return (
         <>
             <main className={styles.playground}>
@@ -44,12 +46,12 @@ function PlayGround () {
 
                 {
                     stage === 'menu' &&
-                    <Menu />
+                    <Menu setGameMode={setGameMode} />
                 }
 
                 {
                     stage === 'game' || stage === 'reset' ?
-                    <Table gameState={gameState} setGameState={setGameState} />
+                    <Table gameState={gameState} setGameState={setGameState} gameMode={gameMode} />
                     : null
                 }
 
@@ -73,8 +75,13 @@ function PlayGround () {
                 <ReturnButton />
                 : null
             }
-                
-            <Score winner={winner} />
+            
+            {
+                stage === 'game' || stage === 'reset' ?
+                <Score winner={winner} />
+                : null
+            }
+
         </>
     )
 }

@@ -9,11 +9,12 @@ function Score ({winner}){
 
     const { stage } = useContext(StageContext)
     
+    /*
     // display the score component
     useEffect(() => {
         if(stage === 'menu') document.getElementById('score-table').style.display = 'none'
         else if(stage === 'game') document.getElementById('score-table').style.display = 'flex'
-    }, [stage])
+    }, [stage])*/
 
     useEffect(() => {
         if(winner && winner !== 'draw'){
