@@ -1,17 +1,17 @@
 import { useContext } from "react"
 import { DarkModeContext } from '../../services/DarkModeContext'
 import { IconMoonFilled, IconSunFilled } from "@tabler/icons-react"
-import styles from './ThemeButton.module.css'
+import Button from "./Button"
 
 function ThemeButton(){
     const {darkMode, toggleDarkMode} = useContext(DarkModeContext)
 
     return (
-        <div onClick={toggleDarkMode} className={styles.themeButton}>
+        <Button onClick={toggleDarkMode} id="themeButton">
             {
                 darkMode ? <IconSunFilled size={60} /> : <IconMoonFilled  size={60} />
             }
-        </div>
+        </Button>
     )
 
 }
