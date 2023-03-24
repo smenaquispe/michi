@@ -12,7 +12,7 @@ import ReturnButton from '../Buttons/ReturnButton';
 function PlayGround () {
     
     const { stage, setStage } = useContext(StageContext)
-    const { winner } = useContext(WinnerContext)
+    const { winner, setWinner } = useContext(WinnerContext)
 
     // array recieve the image of the game
     const [gameState, setGameState] = useState([
@@ -38,6 +38,11 @@ function PlayGround () {
         // if winnner, necessary reset
         if(winner) setStage('reset')
     }, [winner])
+
+    useEffect(() => {
+        if(stage === 'menu')
+            setWinner(null)
+    }, [stage])
 
     return (
         <>
