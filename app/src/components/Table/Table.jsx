@@ -65,8 +65,8 @@ function Table ({gameState, setGameState, gameMode}) {
                         })
                     })
                 }
+                <Line pos1={[0,0]} pos2={[450,450]} />
             </article>
-            <Line pos1={[100,100]} pos2={[200,400]} />
         </>
 
     )

@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import styles from './Line.module.css'
 
 const getProps = (pos1, pos2) => {
@@ -31,7 +32,14 @@ function Line({pos1, pos2}){
     }
 
     return (
-        <div className={styles.line} style={{...position}}></div>
+        <motion.div 
+            className={styles.line} 
+            style={{...position}} 
+
+            initial={{opacity:0}}
+            animate={{opacity:1}}
+            transition={{duration:1.5}}
+        />
     )
 }
 
