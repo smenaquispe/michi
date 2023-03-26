@@ -4,23 +4,21 @@ import { useState, useContext, useEffect } from 'react'
 import { WinnerContext } from '../../services/WinnerContext'
 import { handleGame, computerPlay } from './HandleGame'
 import { StageContext } from '../../services/StageContext'
-
+import { createLine } from '../../services/createLine'
 
 function Table ({gameState, setGameState, gameMode}) {
 
     //stage 
     const {stage} = useContext(StageContext)
-
-    // turns
-    const [turn, setTurn] = useState('X')
-
     // use winner context
     const {winner, play} = useContext(WinnerContext)
-
+    // turns
+    const [turn, setTurn] = useState('X')
+    // timeout to prevent multiclicks
     const [waitClick, setWaitClick] = useState(true)
 
+    // handle game as player
     const handleGameState = e => {
-
         if(waitClick){
             handleGame(e, {
                 gameState,
@@ -32,6 +30,7 @@ function Table ({gameState, setGameState, gameMode}) {
         }
     }
 
+    // computer
     useEffect(() => {
         if(!turn) return
 
@@ -50,21 +49,26 @@ function Table ({gameState, setGameState, gameMode}) {
         }
     }, [turn])
 
+    // reset and set turn x
     useEffect(() => {
         if(stage === 'reset')
             setTurn('X')
     }, [stage])
 
     return (
-        <article className={styles.table} onClick={handleGameState}>
-            {
-                gameState.map((row, i) => {
-                    return row.map((sec, j) => {
-                        return <Locker id={`${i}_${j}`} figureTurn={gameState[i][j]}>{sec}</Locker>
+        <>
+            <article className={styles.table} onClick={handleGameState}>            
+                {
+                    gameState.map((row, i) => {
+                        return row.map((sec, j) => {
+                            return <Locker id={`${i}_${j}`} figureTurn={gameState[i][j]}>{sec}</Locker>
+                        })
                     })
-                })
-            }
-        </article>
+                }
+
+            </article>
+        </>
+
     )
 }
 

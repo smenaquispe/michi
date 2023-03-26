@@ -27,6 +27,7 @@ export const handleGame = (e, states) => {
 
             // set the winner if win
             play(gameState)
+
         } catch (error) {
             return
         }
@@ -52,6 +53,5 @@ export const computerPlay = (states) => {
         // set other turn
         setTurn(turn === 'X' ? 'O' : 'X')                
         // set the winner if win
-        play(gameState)
-        
+        play(gameState)       
 }
