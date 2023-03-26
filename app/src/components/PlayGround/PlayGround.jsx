@@ -24,6 +24,11 @@ function PlayGround () {
     // gamemode
     const [gameMode, setGameMode] = useState(null)
 
+    useEffect(() => {
+        const prevGameMode = JSON.parse(localStorage.getItem('gamemode'))
+        if(prevGameMode) setGameMode(prevGameMode)
+    }, [])
+
     // reboot the game
     const resetGame = () => {
         setGameState([
@@ -40,8 +45,14 @@ function PlayGround () {
     }, [winner])
 
     useEffect(() => {
-        if(stage === 'menu')
+        if(stage === 'menu'){
             setWinner(null)
+            setGameState([
+                ['', '', ''],
+                ['', '', ''],
+                ['', '', '']
+            ])  
+        }
     }, [stage])
 
     return (

@@ -8,11 +8,13 @@ function Menu({setGameMode}){
     const { setStage } = useContext(StageContext)
 
     const goToMultiPlayer = () => {
+        localStorage.setItem('gamemode', JSON.stringify('multiplayer'))
         setStage('game')
         setGameMode('multiplayer')
     }
 
     const goToSinglePlayer = () => {
+        localStorage.setItem('gamemode', JSON.stringify('singleplayer'))
         setStage('game')
         setGameMode('singleplayer')
     }

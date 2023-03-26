@@ -1,12 +1,16 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 
 const DarkModeContext = createContext()
 
 function DarkModeProvider({children}){
     const [darkMode, setDarkMode] = useState(false)
+    
     const toggleDarkMode = () => {
-        
-        if(!darkMode){
+        setDarkMode(!darkMode)
+    }
+
+    const paint = () => {
+        if(darkMode){
             document.documentElement.style.setProperty('--primary-color', 'black')
             document.documentElement.style.setProperty('--secundary-color', 'white')
             document.documentElement.style.setProperty('--shadow-color', 'black')
@@ -15,9 +19,18 @@ function DarkModeProvider({children}){
             document.documentElement.style.setProperty('--secundary-color', 'black')
             document.documentElement.style.setProperty('--shadow-color', '#c2bebe')
         }
-
-        setDarkMode(!darkMode)
     }
+
+    useEffect(() => {
+        const theme = JSON.parse(localStorage.getItem('theme'))
+        setDarkMode(theme)
+        paint()
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('theme', JSON.stringify(darkMode))
+        paint()
+    }, [darkMode])
 
     return (
         <div>

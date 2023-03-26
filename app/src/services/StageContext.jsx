@@ -1,4 +1,4 @@
-import React, {createContext, useState} from "react";
+import React, {createContext, useEffect, useState} from "react";
 
 const StageContext = createContext()
 
@@ -11,6 +11,16 @@ function StageProvider({children}){
      * 
      */
     const [stage, setStage]  = useState('menu')
+
+    useEffect(() => {
+        const lastStage = JSON.parse(localStorage.getItem('stage'))
+        if(lastStage)
+            setStage(lastStage)
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem('stage', JSON.stringify(stage))
+    }, [stage])
     
     return (
         <>
