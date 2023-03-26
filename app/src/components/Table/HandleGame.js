@@ -8,7 +8,7 @@ export const handleGame = (e, states) => {
 
             // get locker
             let locker
-            if(e.target.className === 'locker') locker = e.target 
+            if(e.target.className.includes('locker')) locker = e.target 
             else locker = e.target.parentElement
 
             // get the position of locker
