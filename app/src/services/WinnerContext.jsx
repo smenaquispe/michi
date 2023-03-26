@@ -5,14 +5,17 @@ const WinnerContext = createContext()
 
 function WinnerProvider({children}) {
     const [winner, setWinner] = useState(null)
+    const [positionsLineWin, setPositionsLineWin] = useState(null)
 
     const play = (gameState) => {
-        setWinner(gameRules(gameState))
+        const { whoWin, lineWin } = gameRules(gameState)
+        setWinner(whoWin)
+        setPositionsLineWin(lineWin)
     }
 
     return (
         <>
-            <WinnerContext.Provider value={{winner, play, setWinner}}>
+            <WinnerContext.Provider value={{winner, play, setWinner, positionsLineWin}}>
                 {children}
             </WinnerContext.Provider>
         </>

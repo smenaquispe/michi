@@ -11,7 +11,7 @@ function Table ({gameState, setGameState, gameMode}) {
     //stage 
     const {stage} = useContext(StageContext)
     // use winner context
-    const {winner, play} = useContext(WinnerContext)
+    const {winner, play, positionsLineWin} = useContext(WinnerContext)
     // turns
     const [turn, setTurn] = useState('X')
     // timeout to prevent multiclicks
@@ -55,6 +55,14 @@ function Table ({gameState, setGameState, gameMode}) {
             setTurn('X')
     }, [stage])
 
+
+    // map array of positions in slots to array of pos in pxs
+    useEffect(() => {
+        if(positionsLineWin && Object.entries(positionsLineWin).length > 0) {
+            console.log(positionsLineWin)
+        }
+    }, [positionsLineWin])
+
     return (
         <>
             <article className={styles.table} onClick={handleGameState}>            
@@ -65,7 +73,8 @@ function Table ({gameState, setGameState, gameMode}) {
                         })
                     })
                 }
-                <Line pos1={[0,0]} pos2={[450,450]} />
+
+                <Line pos1={[0,0]} pos2={[450,450]} />                
             </article>
         </>
 
