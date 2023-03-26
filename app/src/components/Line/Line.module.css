@@ -1,0 +1,5 @@
+.line {
+    border: 4px solid var(--secundary-color);
+    height: 0;
+    position: absolute;
+}

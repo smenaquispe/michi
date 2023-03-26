@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { WinnerContext } from '../../services/WinnerContext'
 import { handleGame, computerPlay } from './HandleGame'
 import { StageContext } from '../../services/StageContext'
-import { createLine } from '../../services/createLine'
+import Line from '../Line/Line'
 
 function Table ({gameState, setGameState, gameMode}) {
 
@@ -65,8 +65,8 @@ function Table ({gameState, setGameState, gameMode}) {
                         })
                     })
                 }
-
             </article>
+            <Line pos1={[100,100]} pos2={[200,400]} />
         </>
 
     )
