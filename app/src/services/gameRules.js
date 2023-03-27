@@ -58,7 +58,7 @@ function checkColumns(game, letter) {
             check = true
             break
         }
-        index = i
+        index++
     }
 
     let lineWin = {}

@@ -6,17 +6,18 @@ const getProps = (pos1, pos2) => {
     const [x1, y1] = pos1
     const [x2, y2] = pos2
 
-    let a = x1 - x2,
-    b = y1 - y2,
-    c = Math.sqrt(a * a + b * b);
+    let dx = x2 - x1;
+    let dy = y2 - y1;
+    let c = Math.sqrt(dx * dx + dy * dy);
 
-    let sx = (x1 + x2) / 2,
-        sy = (y1 + y2) / 2;
+    console.log(c)
+    
+    let alpha = Math.atan2(dy, dx);
 
-    let x = sx - c / 2,
-        y = sy;
+    let x = x1;
+    let y = y1;
 
-    let alpha = Math.PI - Math.atan2(-b, a);
+    console.log(x)
 
     return [x, y, c, alpha]
 }
@@ -35,10 +36,11 @@ function Line({pos1, pos2}){
         <motion.div 
             className={styles.line} 
             style={{...position}} 
-
+/*
             initial={{opacity:0}}
             animate={{opacity:1}}
             transition={{duration:1.5}}
+*/
         />
     )
 }

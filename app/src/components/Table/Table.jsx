@@ -16,6 +16,8 @@ function Table ({gameState, setGameState, gameMode}) {
     const [turn, setTurn] = useState('X')
     // timeout to prevent multiclicks
     const [waitClick, setWaitClick] = useState(true)
+    // state of positions of drawing line
+    const [posLine, setPosLine] = useState(null)
 
     // handle game as player
     const handleGameState = e => {
@@ -59,7 +61,21 @@ function Table ({gameState, setGameState, gameMode}) {
     // map array of positions in slots to array of pos in pxs
     useEffect(() => {
         if(positionsLineWin && Object.entries(positionsLineWin).length > 0) {
-            console.log(positionsLineWin)
+            const { pos1, pos2 } = positionsLineWin
+
+            const locker1 = document.getElementById(`${pos1[0]}_${pos1[1]}`).getBoundingClientRect()
+            const locker2 = document.getElementById(`${pos2[0]}_${pos2[1]}`).getBoundingClientRect()
+
+            console.log({
+                pos1: [locker1.left, locker1.top],
+                pos2: [locker2.left, locker2.top]
+            })
+            
+            setPosLine({
+                pos1: [locker1.left, locker1.top],
+                pos2: [locker2.left, locker2.top]
+            })
+
         }
     }, [positionsLineWin])
 
@@ -73,9 +89,12 @@ function Table ({gameState, setGameState, gameMode}) {
                         })
                     })
                 }
-
-                <Line pos1={[0,0]} pos2={[450,450]} />                
             </article>
+
+            {
+                posLine && 
+                <Line {...posLine} />                
+            }
         </>
 
     )
