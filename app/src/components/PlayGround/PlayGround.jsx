@@ -59,7 +59,6 @@ function PlayGround () {
         <>
             <main className={styles.playground}>
                 <h1>Tik Tak Toe</h1>
-
                 {
                     stage === 'menu' &&
                     <Menu setGameMode={setGameMode} />
@@ -81,7 +80,6 @@ function PlayGround () {
                         }
                     </Advice>
                 }
-
             </main>
 
             <ThemeButton />

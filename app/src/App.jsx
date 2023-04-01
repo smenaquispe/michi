@@ -6,11 +6,12 @@ import { WinnerProvider } from "./services/WinnerContext"
 
 function App () {
 
+    /*
     useEffect(() => {
         window.addEventListener('mousemove', e => {
             console.log(e.clientX,e.clientY)
         })
-    })
+    })*/
 
     return (
         <>

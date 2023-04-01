@@ -66,11 +66,6 @@ function Table ({gameState, setGameState, gameMode}) {
             const locker1 = document.getElementById(`${pos1[0]}_${pos1[1]}`).getBoundingClientRect()
             const locker2 = document.getElementById(`${pos2[0]}_${pos2[1]}`).getBoundingClientRect()
 
-            console.log({
-                pos1: [locker1.left, locker1.top],
-                pos2: [locker2.left, locker2.top]
-            })
-            
             setPosLine({
                 pos1: [locker1.left, locker1.top],
                 pos2: [locker2.left, locker2.top]

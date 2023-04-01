@@ -4,4 +4,5 @@
     position: absolute;
     border-radius: 6px;
     background-color: var(--secundary-color);
+    transform-origin: top left;
 }
