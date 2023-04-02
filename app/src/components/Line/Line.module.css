@@ -1,8 +1,0 @@
-.line {
-    border: 4px solid var(--secundary-color);
-    height: 0;
-    position: absolute;
-    border-radius: 6px;
-    background-color: var(--secundary-color);
-    transform-origin: top left;
-}

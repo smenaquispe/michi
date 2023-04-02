@@ -4,7 +4,7 @@ import { useState, useContext, useEffect } from 'react'
 import { WinnerContext } from '../../services/WinnerContext'
 import { handleGame, computerPlay } from './HandleGame'
 import { StageContext } from '../../services/StageContext'
-import Line from '../Line/Line'
+import winnerLockerStyle from '../Locker/Locker.module.css'
 
 function Table ({gameState, setGameState, gameMode}) {
 
@@ -16,8 +16,6 @@ function Table ({gameState, setGameState, gameMode}) {
     const [turn, setTurn] = useState('X')
     // timeout to prevent multiclicks
     const [waitClick, setWaitClick] = useState(true)
-    // state of positions of drawing line
-    const [posLine, setPosLine] = useState(null)
 
     // handle game as player
     const handleGameState = e => {
@@ -53,24 +51,17 @@ function Table ({gameState, setGameState, gameMode}) {
 
     // reset and set turn x
     useEffect(() => {
-        if(stage === 'reset')
+        if(stage === 'reset'){
             setTurn('X')
+        }
     }, [stage])
 
-
-    // map array of positions in slots to array of pos in pxs
     useEffect(() => {
-        if(positionsLineWin && Object.entries(positionsLineWin).length > 0) {
-            const { pos1, pos2 } = positionsLineWin
-
-            const locker1 = document.getElementById(`${pos1[0]}_${pos1[1]}`).getBoundingClientRect()
-            const locker2 = document.getElementById(`${pos2[0]}_${pos2[1]}`).getBoundingClientRect()
-
-            setPosLine({
-                pos1: [locker1.left, locker1.top],
-                pos2: [locker2.left, locker2.top]
-            })
-
+        if(positionsLineWin && Object.entries(positionsLineWin).length > 0){
+            for(const [key, value] of Object.entries(positionsLineWin)){
+                const position = document.getElementById(`${value[0]}_${value[1]}`)
+                position.classList.add(winnerLockerStyle.winnerLocker)
+            }
         }
     }, [positionsLineWin])
 
@@ -85,11 +76,6 @@ function Table ({gameState, setGameState, gameMode}) {
                     })
                 }
             </article>
-
-            {
-                posLine && 
-                <Line {...posLine} />                
-            }
         </>
 
     )

@@ -15,7 +15,7 @@ function WinnerProvider({children}) {
 
     return (
         <>
-            <WinnerContext.Provider value={{winner, play, setWinner, positionsLineWin}}>
+            <WinnerContext.Provider value={{winner, play, setWinner, positionsLineWin, setPositionsLineWin}}>
                 {children}
             </WinnerContext.Provider>
         </>

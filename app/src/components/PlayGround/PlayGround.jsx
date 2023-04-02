@@ -8,11 +8,12 @@ import Score from '../Score/Score';
 import Menu from '../Menu/Menu';
 import styles from './PlayGround.module.css'
 import ReturnButton from '../Buttons/ReturnButton';
+import winnerLockerStyle from '../Locker/Locker.module.css'
 
 function PlayGround () {
     
     const { stage, setStage } = useContext(StageContext)
-    const { winner, setWinner } = useContext(WinnerContext)
+    const { winner, setWinner, setPositionsLineWin } = useContext(WinnerContext)
 
     // array recieve the image of the game
     const [gameState, setGameState] = useState([
@@ -36,12 +37,20 @@ function PlayGround () {
             ['', '', ''],
             ['', '', '']
         ])
+        
+        const lockers = document.querySelectorAll('.locker')
+        lockers.forEach(l => l.classList.remove(winnerLockerStyle.winnerLocker))
+
         setStage('game')
     }
 
     useEffect(() => {
         // if winnner, necessary reset
-        if(winner) setStage('reset')
+        if(winner) {
+            setTimeout(() => {
+                setStage('reset')  
+            }, 700);
+        } 
     }, [winner])
 
     useEffect(() => {
@@ -52,7 +61,10 @@ function PlayGround () {
                 ['', '', ''],
                 ['', '', '']
             ])  
+
+            setPositionsLineWin(null)
         }
+        
     }, [stage])
 
     return (
@@ -73,11 +85,11 @@ function PlayGround () {
                 {
                     stage === 'reset' && 
                     <Advice onClick={resetGame} >
-                        {
-                            winner === 'draw' 
-                            ? "¡Draw!"
-                            : `¡Win ${winner}!`
-                        }
+                    {
+                        winner === 'draw' 
+                        ? "¡Draw!"
+                        : `¡Win ${winner}!`
+                    }
                     </Advice>
                 }
             </main>

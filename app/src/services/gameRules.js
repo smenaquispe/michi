@@ -40,7 +40,8 @@ function checkRows(game, letter) {
     let lineWin = {}
     if(check){
         lineWin['pos1'] = [index, 0]
-        lineWin['pos2'] = [index, 2]
+        lineWin['pos2'] = [index, 1]
+        lineWin['pos3'] = [index, 2]
     }
 
     return { check, lineWin }
@@ -64,7 +65,8 @@ function checkColumns(game, letter) {
     let lineWin = {}
     if(check){
         lineWin['pos1'] = [0, index]
-        lineWin['pos2'] = [2, index]
+        lineWin['pos2'] = [1, index]
+        lineWin['pos3'] = [2, index]
     }
 
     return { check, lineWin }
@@ -82,11 +84,11 @@ function checkDiagonal(game, letter){
     }
 
     if(principalDiag.every(elem => elem === letter)){
-        const lineWin = {pos1:[0,0], pos2:[2,2]}
+        const lineWin = {pos1:[0,0], pos2:[1,1], pos3:[2,2]}
         return { check: true, lineWin }
     }
     if(secundaryDiag.every(elem => elem === letter)){        
-        const lineWin = {pos1:[2,0], pos2:[0,2]}
+        const lineWin = {pos1:[2,0], pos2:[1,1], pos3:[0,2]}
         return { check: true, lineWin }
     }
     
