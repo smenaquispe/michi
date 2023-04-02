@@ -105,9 +105,3 @@ function checkTie(game){
     
     return true
 }
-
-const game = [
-    ['X', 'X', 'X'],
-    ['', '', ''],
-    ['O', '', 'O']
-]
