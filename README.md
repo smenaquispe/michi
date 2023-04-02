@@ -1,6 +1,9 @@
 # Michi (tik tak toe)
 This is a game of tik tak toe made with react and javascript
 
+## What do I learn?
+I learnt to use context and modals with portals in reactjs, and also stylize with react module css, and animate with motion
+
 ## Technologies:
 - Reactjs
 - Javascript
