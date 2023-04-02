@@ -17,4 +17,13 @@ you just have to follow this steps:
 - Just play
 
 ## Pictures of the result
+- DarkMode
 ![](https://github.com/smenaquispe/michi/blob/main/images/1.PNG)
+- LightMode
+![](https://github.com/smenaquispe/michi/blob/main/images/2.PNG)
+- Menu
+![](https://github.com/smenaquispe/michi/blob/main/images/3.PNG)
+- In game
+![](https://github.com/smenaquispe/michi/blob/main/images/4.PNG)
+![](https://github.com/smenaquispe/michi/blob/main/images/5.PNG)
+
