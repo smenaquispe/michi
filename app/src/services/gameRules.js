@@ -111,5 +111,3 @@ const game = [
     ['', '', ''],
     ['O', '', 'O']
 ]
-
-console.log(checkRows(game, 'X'))
