@@ -1,10 +1,12 @@
 # Michi (tik tak toe)
 This is a game of tik tak toe made with react and javascript
 
+## Demo
+You can acces to my project in a deployment made with vercel [link](https://michi-ashen.vercel.app/)
 ## What do I learn?
 I learnt to use context and modals with portals in reactjs, and also stylize with react module css, and animate with motion
 
-## Technologies:
+## Technologies
 - Reactjs
 - Javascript
 - React module css
